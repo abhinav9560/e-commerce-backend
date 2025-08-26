@@ -30,7 +30,7 @@ app.use(
         : [
             "http://localhost:5173",
             "http://localhost:8081",
-            "https://e-commerce-5hc9jf6vm-abhinavs-projects-d09d510a.vercel.app",
+            "https://e-commerce-obz4acqs7-abhinavs-projects-d09d510a.vercel.app",
           ], // Add your frontend URLs
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
