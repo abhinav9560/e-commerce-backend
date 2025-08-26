@@ -28,6 +28,7 @@ app.use(
       process.env.NODE_ENV === "production"
         ? [process.env.CLIENT_URL]
         : [
+            "*",
             "http://localhost:5173",
             "http://localhost:8081",
             "https://e-commerce-obz4acqs7-abhinavs-projects-d09d510a.vercel.app",
