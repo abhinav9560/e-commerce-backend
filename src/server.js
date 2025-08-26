@@ -27,7 +27,11 @@ app.use(
     origin:
       process.env.NODE_ENV === "production"
         ? [process.env.CLIENT_URL]
-        : ["http://localhost:5173", "http://localhost:8081"], // Add your frontend URLs
+        : [
+            "http://localhost:5173",
+            "http://localhost:8081",
+            "https://e-commerce-5hc9jf6vm-abhinavs-projects-d09d510a.vercel.app",
+          ], // Add your frontend URLs
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -35,7 +39,7 @@ app.use(
 );
 
 // Static files
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
 
 // Body parsing middleware
 app.use(express.json({ limit: "10mb" }));
@@ -126,7 +130,7 @@ app.use((err, req, res, next) => {
   }
 
   // Express validator errors
-  if (err.type === 'entity.parse.failed') {
+  if (err.type === "entity.parse.failed") {
     return res.status(400).json({
       success: false,
       message: "Invalid JSON format",
