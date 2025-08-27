@@ -44,4 +44,5 @@ Thumbs.db
 # Optional npm cache directory
 .npm
 
-# Optiona
+# PM2 config
+ecosystem.config.js
