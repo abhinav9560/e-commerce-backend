@@ -101,9 +101,11 @@ cartSchema.methods.addItem = function (productId, quantity, price) {
 
 // Method to update item quantity
 cartSchema.methods.updateItemQuantity = function (productId, quantity) {
-  const itemIndex = this.items.findIndex(
-    (item) => item.product.toString() === productId.toString()
-  );
+  const itemIndex = this.items.findIndex((item) => {
+    // Handle both populated and non-populated product references
+    const itemProductId = item.product._id || item.product;
+    return itemProductId.toString() === productId.toString();
+  });
 
   if (itemIndex > -1) {
     if (quantity <= 0) {
@@ -119,9 +121,11 @@ cartSchema.methods.updateItemQuantity = function (productId, quantity) {
 
 // Method to remove item from cart
 cartSchema.methods.removeItem = function (productId) {
-  const itemIndex = this.items.findIndex(
-    (item) => item.product.toString() === productId.toString()
-  );
+  const itemIndex = this.items.findIndex((item) => {
+    // Handle both populated and non-populated product references
+    const itemProductId = item.product._id || item.product;
+    return itemProductId.toString() === productId.toString();
+  });
 
   if (itemIndex > -1) {
     this.items.splice(itemIndex, 1);
